@@ -32,6 +32,7 @@ The result of the test is displayed on screen. If the FA is not deterministic, y
         i=0
         #Then we verify this guess
         while (isdeterministic and i<n):
+            #len(self.nodes['0']) returns the number of character in the alphabet.
             for j in range(len(self.nodes['0'])):
                 #If there are more than one transition possible from a single node using one character.
                 if (len(self.nodes[str(i)][j])>1):
@@ -64,5 +65,16 @@ The result must figure on screen. If the automaton is not complete, your program
         return iscomplete
     
     def isstandard(self)-> bool:
-        return
+        n=len(self.nodes)
+        i=0
+        
+        if self.entries_number!=1:
+            print("There are multiples entries, the automata is not standart")
+        while (i<n):
+            for j in range(len(self.nodes['0'])):
+                #If there is a transition going to the entry.
+                if (self.entries[0] in self.nodes[str(i)][j]):
+                    return False
+            i=i+1
+        return True
     
