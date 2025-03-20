@@ -25,44 +25,37 @@ class FA:
         """Check whether the automaton FA is deterministic.
 The result of the test is displayed on screen. If the FA is not deterministic, your program must tell the user why.
         """
-        # We take a guess:
-        isdeterministic=True
-
         n=len(self.nodes)
         i=0
         #Then we verify this guess
-        while (isdeterministic and i<n):
+        while (i<n):
             #len(self.nodes['0']) returns the number of character in the alphabet.
             for j in range(len(self.nodes['0'])):
                 #If there are more than one transition possible from a single node using one character.
                 if (len(self.nodes[str(i)][j])>1):
                     isdeterministic=False
                     print(f"\nThe automata is not deterministic, There are multiples transitions at node {str(i)} using the character '{chr(j+97)}' ({str(i)}-{chr(j+97)}>p)>1")
+                    return False
             i=i+1
-        if isdeterministic: 
-            print("\nThe automata is deterministic.")
-        return isdeterministic
+        print("\nThe automata is deterministic.")
+        return True 
 
     def iscomplete(self)-> bool:
         """Check whether the synchronous and deterministic automaton FA is complete.
 The result must figure on screen. If the automaton is not complete, your program must tell the user why.
         """
-        # We take a guess:
-        iscomplete=True
-
         n=len(self.nodes)
         i=0
         #Then we verify this guess
-        while (iscomplete and i<n):
+        while (i<n):
             for j in range(len(self.nodes['0'])):
                 #if There are no transitions from i using char j
                 if (len(self.nodes[str(i)][j])==0):
-                    iscomplete=False
                     print(f"\nThe automata is not complete, there is no transition starting from node {str(i)} using the character '{chr(j+97)}' ({str(i)}-{chr(j+97)}>p)")
+                    return False
             i=i+1
-        if iscomplete:
-            print("The automata is complete.")
-        return iscomplete
+        print("The automata is complete.")
+        return True
     
     def isstandard(self)-> bool:
         n=len(self.nodes)
