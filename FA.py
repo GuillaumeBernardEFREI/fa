@@ -33,7 +33,6 @@ The result of the test is displayed on screen. If the FA is not deterministic, y
             for j in range(len(self.nodes['0'])):
                 #If there are more than one transition possible from a single node using one character.
                 if (len(self.nodes[str(i)][j])>1):
-                    isdeterministic=False
                     print(f"\nThe automata is not deterministic, There are multiples transitions at node {str(i)} using the character '{chr(j+97)}' ({str(i)}-{chr(j+97)}>p)>1")
                     return False
             i=i+1

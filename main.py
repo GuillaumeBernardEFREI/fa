@@ -11,3 +11,4 @@ f = load_fa("#28",fa_folder)
 #f.iscomplete()
 
 display(f)
+word_recog(f)
