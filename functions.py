@@ -81,7 +81,7 @@ def determinize(fa)->FA:
                     if fa.nodes[current_state][i][j] in fa.entries and add_initial == 0:#we have to check if the new_state is intial/termnial state
                         add_initial = 1
                         new_fa.entries_number +=1
-                    if fa.nodes[current_state][i][j] in fa.terminals and terminal == 0:
+                    if fa.nodes[current_state][i][j] in fa.terminals and add_terminal == 0:
                         add_terminal = 1
                         new_fa.terminal_number +=1
                 if not (next_state in list_states): # look if the state already exist or not
