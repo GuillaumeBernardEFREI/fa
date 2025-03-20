@@ -6,8 +6,8 @@ fa_folder = "automates"
 f = load_fa("auto1.txt",fa_folder)
 #f = complementarize(f)
 
-f.isautomaton()
-f.isdeterministic()
-f.iscomplete()
+#print(f.isautomaton())
+#print(f.isdeterministic())
+#f.iscomplete()
 
 print(f)

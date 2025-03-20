@@ -7,7 +7,6 @@ def split_with_alphabet(_str):
             return [_str[:i],_str[i],str(int(_str[i+1:]))]
 
 
-
 def load_fa(fa_path,fa_folder)->FA:
     f = open(path.join(fa_folder,fa_path),mode="r")
     #symbols in the alphabet
@@ -64,4 +63,33 @@ def complementarize(fa)->FA:
             continue
     return FA(fa.entries_number,len(_terminals),fa.entries,_terminals,fa.nodes)
 
+
+def determinize(fa)->FA:
+    new_nodes = {} # the new dict for the new Fa
+    list_states = []
+    new_fa = FA(0,[''],0,[''],new_nodes) #create an empty FA in order to fill it from the previous one
+    if not(fa.isdeterministic()):
+        for state in fa.entries: #we are looking for each intial state
+            current_state = state #intialize the current state with the initiale state
+            for i in range(0,len(fa.nodes[state]),1): #we are looking for each transition
+                add_initial = 0 #to be sure that we add only once intial/terminal number by state
+                add_terminal = 0
+                #if len(current_state[i]) > 1: #if there is an ambiguïtie with one transition
+                next_state = ""
+                for j in range(0,len(fa.nodes[current_state][i]),1): #The Transition
+                    next_state += fa.nodes[current_state][i][j]
+                    if fa.nodes[current_state][i][j] in fa.entries and add_initial == 0:#we have to check if the new_state is intial/termnial state
+                        add_initial = 1
+                        new_fa.entries_number +=1
+                    if fa.nodes[current_state][i][j] in fa.terminals and terminal == 0:
+                        add_terminal = 1
+                        new_fa.terminal_number +=1
+                if not (next_state in list_states): # look if the state already exist or not
+                    list_states.append(next_state)
+                    new_fa.nodes[current][i][0] = next_state
+                    current = next_state
+                    #new_fa.nodes[new_state] = new_nodes
+        return new_fa
+    else:
+        return fa
 
