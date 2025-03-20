@@ -10,4 +10,4 @@ f = load_fa("auto1.txt",fa_folder)
 #print(f.isdeterministic())
 #f.iscomplete()
 
-print(f)
+display(f)

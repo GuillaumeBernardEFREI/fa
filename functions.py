@@ -1,6 +1,7 @@
 from os import path
 from FA import FA
 
+from math import ceil
 def split_with_alphabet(_str):
     for i in range(len(_str)):
         if not(_str[i] in "0123456789"):
@@ -92,4 +93,56 @@ def determinize(fa)->FA:
         return new_fa
     else:
         return fa
+    
+def display(fa):
+    
+    for i in fa.nodes:
+        alpha = len(fa.nodes[i])
+        break
+
+    columnswidth=[]
+
+    for i in range(alpha):
+        columnswidth.append(5)
+        
+        for j in fa.nodes:
+            t = str(fa.nodes[j][i])
+            t = max(5,len(t)-t.count("'") -t.count(" ")-2)
+            if(columnswidth[-1]<t):
+                columnswidth[-1]=t
+
+    print('   |  State  ',end="")
+
+    for i in range(alpha):
+        print("|"+" "*int((columnswidth[i]-1)/2) +chr(97+i)+" "*int(ceil((columnswidth[i]-1)/2)),end="")
+
+    print("|")
+    print("   "+"-"*(alpha*6+11))
+
+    for i in fa.nodes:
+        if(i in fa.terminals) and not(i in fa.entries): print(" <-",end="")
+        if not(i in fa.terminals) and (i in fa.entries): print(" ->",end="")
+        if (i in fa.terminals) and (i in fa.entries): print("<->",end="")
+        if not(i in fa.terminals) and not(i in fa.entries): print("   ",end="")
+
+        print("|" +" "*int((9-len(i))/2)+i+" "*int(ceil((9-len(i))/2))  +"|",end="")
+        
+        for j in range(len(fa.nodes[i])):
+
+            t = str(fa.nodes[i][j])
+            t = len(t)-t.count("'") -t.count(" ")-2
+            t = (columnswidth[j]-t)/2
+
+            print(" "* int(t),end="")
+
+            for k in range(len(fa.nodes[i][j])-1):
+                print(fa.nodes[i][j][k],end=",")
+
+            if len(fa.nodes[i][j])>0: print(fa.nodes[i][j][-1],end="")
+
+            print(" "* int(ceil(t))+"|",end="")
+
+            
+        print("")
+        print("   "+"-"*(alpha*6+11))        
 
