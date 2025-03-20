@@ -9,5 +9,5 @@ f = load_fa("#28",fa_folder)
 #print(f.isautomaton())
 #print(f.isdeterministic())
 #f.iscomplete()
-print(f)
-word_recog(f)
+
+display(f)
