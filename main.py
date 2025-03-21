@@ -3,12 +3,13 @@ from functions import *
 
 fa_folder = "automates"
 
-f = load_fa("#28",fa_folder)
+f = load_fa("auto1.txt",fa_folder)
 #f = complementarize(f)
 
 #print(f.isautomaton())
-#print(f.isdeterministic())
-#f.iscomplete()
-
 display(f)
-word_recog(f)
+#f.iscomplete()
+f = determinize(f)
+display(f)
+f.isdeterministic()
+#word_recog(f)

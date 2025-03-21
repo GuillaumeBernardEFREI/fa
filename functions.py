@@ -4,9 +4,19 @@ from FA import FA
 from math import ceil
 def split_with_alphabet(_str):
     for i in range(len(_str)):
-        if not(_str[i] in "0123456789"):
+        if not(_str[i] in ".0123456789"):
             return [_str[:i],_str[i],str(int(_str[i+1:]))]
-
+def set_to_str(s):
+    if(len(s))==0: return ""
+    s=list(s)
+    s.sort()
+    _str=""
+    for i in range(0,len(s)-1):
+        _str+=s[i]+'.'
+    _str+=s[-1]
+    if(len(s)!=1):
+        return "{"+_str+"}"
+    return _str
 
 def load_fa(fa_path,fa_folder)->FA:
     f = open(path.join(fa_folder,fa_path),mode="r")
@@ -66,33 +76,42 @@ def complementarize(fa)->FA:
 
 
 def determinize(fa)->FA:
-    new_nodes = {} # the new dict for the new Fa
-    list_states = []
-    new_fa = FA(0,[''],0,[''],new_nodes) #create an empty FA in order to fill it from the previous one
-    if not(fa.isdeterministic()):
-        for state in fa.entries: #we are looking for each intial state
-            current_state = state #intialize the current state with the initiale state
-            for i in range(0,len(fa.nodes[state]),1): #we are looking for each transition
-                add_initial = 0 #to be sure that we add only once intial/terminal number by state
-                add_terminal = 0
-                #if len(current_state[i]) > 1: #if there is an ambiguïtie with one transition
-                next_state = ""
-                for j in range(0,len(fa.nodes[current_state][i]),1): #The Transition
-                    next_state += fa.nodes[current_state][i][j]
-                    if fa.nodes[current_state][i][j] in fa.entries and add_initial == 0:#we have to check if the new_state is intial/termnial state
-                        add_initial = 1
-                        new_fa.entries_number +=1
-                    if fa.nodes[current_state][i][j] in fa.terminals and add_terminal == 0:
-                        add_terminal = 1
-                        new_fa.terminal_number +=1
-                if not (next_state in list_states): # look if the state already exist or not
-                    list_states.append(next_state)
-                    new_fa.nodes[current][i][0] = next_state
-                    current = next_state
-                    #new_fa.nodes[new_state] = new_nodes
-        return new_fa
-    else:
-        return fa
+    if(fa.isdeterministic()): return fa
+    
+    aplha = len(fa.nodes[list(fa.nodes.keys())[0]])
+    states = [set()]
+    transitions = [[set([])]*aplha]
+
+    
+    for i in fa.entries:
+        states[0]= states[0].union(set(i))
+        for j in range(len(fa.nodes[i])):
+            transitions[0][j] = transitions[0][j].union(set(fa.nodes[i][j]))
+    n=0
+    while n<len(states):
+        for i in transitions[n]:
+            if len(i)>0 and not(i in states):
+                states.append(i)
+                transitions.append([set([])]*aplha)       
+                for j in i:
+                    for k in range(len(fa.nodes[j])):
+                        transitions[-1][k] =transitions[-1][k].union(set(fa.nodes[j][k]))
+
+        n+=1
+    nodes = {}
+    for i in range(len(transitions)):
+        for j in range(len(transitions[i])):
+            transitions[i][j]=[set_to_str(transitions[i][j])]
+    
+    terminals=[]
+    for i in range(len(states)):
+        nodes[set_to_str(states[i])]=transitions[i].copy()
+        for j in states[i]:
+
+            if j in fa.terminals:
+                terminals.append(set_to_str(states[i]))
+                break
+    return FA(1,len(terminals),[set_to_str(states[0])],terminals.copy(),nodes)
     
 def display(fa):
     
@@ -100,24 +119,28 @@ def display(fa):
         alpha = len(fa.nodes[i])
         break
 
-    columnswidth=[]
-
+    columnswidth=[9]
+    for i in fa.nodes:
+        t = str(i)
+        t = max(9,len(t)-t.count("'") -t.count(" ")-t.count("[")-t.count("]"))
+        if(columnswidth[-1]<t):
+                columnswidth[-1]=t
     for i in range(alpha):
         columnswidth.append(5)
         
         for j in fa.nodes:
-            t = str(fa.nodes[j][i])
-            t = max(5,len(t)-t.count("'") -t.count(" ")-2)
+            t = str(fa.nodes[j])
+            t = max(5,len(t)-t.count("'") -t.count(" ")-t.count("[")-t.count("]"))
             if(columnswidth[-1]<t):
                 columnswidth[-1]=t
 
-    print('   |  State  ',end="")
+    print("   |"+" "* int((columnswidth[0]-5)/2) +'State'+" "*int(ceil((columnswidth[0]-5)/2)),end="")
 
     for i in range(alpha):
-        print("|"+" "*int((columnswidth[i]-1)/2) +chr(97+i)+" "*int(ceil((columnswidth[i]-1)/2)),end="")
+        print("|"+" "*int((columnswidth[i+1]-1)/2) +chr(97+i)+" "*int(ceil((columnswidth[i+1]-1)/2)),end="")
 
     print("|")
-    print("   "+"-"*(alpha*6+11))
+    print("   "+"-"*(sum(columnswidth)+1+len(columnswidth)))
 
     for i in fa.nodes:
         if(i in fa.terminals) and not(i in fa.entries): print(" <-",end="")
@@ -125,26 +148,22 @@ def display(fa):
         if (i in fa.terminals) and (i in fa.entries): print("<->",end="")
         if not(i in fa.terminals) and not(i in fa.entries): print("   ",end="")
 
-        print("|" +" "*int((9-len(i))/2)+i+" "*int(ceil((9-len(i))/2))  +"|",end="")
-        
+        print("|"+" "* int((columnswidth[0]-len(i))/2) +i+" "*int(ceil((columnswidth[0]-len(i))/2))+"|",end="")
         for j in range(len(fa.nodes[i])):
 
             t = str(fa.nodes[i][j])
-            t = len(t)-t.count("'") -t.count(" ")-2
-            t = (columnswidth[j]-t)/2
-
+            t = len(t)-t.count("'") -t.count(" ")-t.count("[")-t.count("]")
+            t = (columnswidth[j+1]-t)/2
+            
             print(" "* int(t),end="")
-
             for k in range(len(fa.nodes[i][j])-1):
                 print(fa.nodes[i][j][k],end=",")
 
             if len(fa.nodes[i][j])>0: print(fa.nodes[i][j][-1],end="")
-
-            print(" "* int(ceil(t))+"|",end="")
-
             
+            print(" "* int(ceil(t))+"|",end="")
         print("")
-        print("   "+"-"*(alpha*6+11))        
+        print("   "+"-"*(sum(columnswidth)+len(columnswidth)+1))        
 
 
 

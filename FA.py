@@ -23,21 +23,29 @@ class FA:
 
     def isdeterministic(self)-> bool: 
         """Check whether the automaton FA is deterministic.
-The result of the test is displayed on screen. If the FA is not deterministic, your program must tell the user why.
+        The result of the test is displayed on screen. If the FA is not deterministic, your program must tell the user why.
+        """
+        for n in self.nodes:
+            for i in range(len(self.nodes[n])):
+                if len(self.nodes[n][i])>1:
+                    print(f"The automata is not deterministic, There are multiples transitions at node {n} using the character '{chr(97+i)}'")
+                    return False
+        print("The automata is deterministic.")
+        return True
         """
         n=len(self.nodes)
         i=0
         #Then we verify this guess
-        while (i<n):
+        while i<n:
             #len(self.nodes['0']) returns the number of character in the alphabet.
-            for j in range(len(self.nodes['0'])):
+            for j in range(len(self.nodes[self.entries[0]])):
                 #If there are more than one transition possible from a single node using one character.
                 if (len(self.nodes[str(i)][j])>1):
                     print(f"\nThe automata is not deterministic, There are multiples transitions at node {str(i)} using the character '{chr(j+97)}' ({str(i)}-{chr(j+97)}>p)>1")
                     return False
             i=i+1
         print("\nThe automata is deterministic.")
-        return True 
+        return True """
 
     def iscomplete(self)-> bool:
         """Check whether the synchronous and deterministic automaton FA is complete.
