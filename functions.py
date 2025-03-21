@@ -21,7 +21,7 @@ def set_to_str(s):
 def load_fa(fa_path,fa_folder)->FA:
     f = open(path.join(fa_folder,fa_path),mode="r")
     #symbols in the alphabet
-    alp = int(f.readline().replace("\n",""))
+    alp = int(f.readline().replace("\n",""))+1
     # Number of states
     n = int(f.readline().replace("\n",""))
     
@@ -58,8 +58,9 @@ def load_fa(fa_path,fa_folder)->FA:
         t = split_with_alphabet(line)
         # from the t[0] th node,
         # add a transition of the character t[1] (97 is the ord of 'a')(So we get a number from 0-25)
-        # to the t[2] th node.
-        nodes[t[0]][ord(t[1])-97].append(t[2])
+        # to the t[2] th node
+        if(t[1]=='!'): nodes[t[0]][0].append(t[2])
+        else : nodes[t[0]][ord(t[1])-96].append(t[2])
     fa = FA(entries_number,terminal_number,entries,terminals,nodes)
     
     return fa
@@ -120,24 +121,21 @@ def display(fa):
         break
 
     columnswidth=[9]
-    for i in fa.nodes:
-        t = str(i)
-        t = max(9,len(t)-t.count("'") -t.count(" ")-t.count("[")-t.count("]"))
-        if(columnswidth[-1]<t):
-                columnswidth[-1]=t
     for i in range(alpha):
-        columnswidth.append(5)
-        
+        columnswidth.append(5)        
         for j in fa.nodes:
-            t = str(fa.nodes[j])
+            t = str(fa.nodes[j][i])
             t = max(5,len(t)-t.count("'") -t.count(" ")-t.count("[")-t.count("]"))
             if(columnswidth[-1]<t):
                 columnswidth[-1]=t
 
     print("   |"+" "* int((columnswidth[0]-5)/2) +'State'+" "*int(ceil((columnswidth[0]-5)/2)),end="")
-
     for i in range(alpha):
-        print("|"+" "*int((columnswidth[i+1]-1)/2) +chr(97+i)+" "*int(ceil((columnswidth[i+1]-1)/2)),end="")
+        if( i !=0):
+            char =chr(97+i)
+        else:
+            char='ε'
+        print("|"+" "*int((columnswidth[i+1]-1)/2) +char+" "*int(ceil((columnswidth[i+1]-1)/2)),end="")
 
     print("|")
     print("   "+"-"*(sum(columnswidth)+1+len(columnswidth)))
@@ -164,8 +162,6 @@ def display(fa):
             print(" "* int(ceil(t))+"|",end="")
         print("")
         print("   "+"-"*(sum(columnswidth)+len(columnswidth)+1))        
-
-
 
 
 def test_word(word : str, FA : FA)-> bool:
