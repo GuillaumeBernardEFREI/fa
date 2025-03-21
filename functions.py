@@ -4,7 +4,7 @@ from FA import FA
 from math import ceil
 def split_with_alphabet(_str):
     for i in range(len(_str)):
-        if not(_str[i] in ".0123456789"):
+        if not(_str[i] in "{.0123456789}"):
             return [_str[:i],_str[i],str(int(_str[i+1:]))]
 def set_to_str(s):
     if(len(s))==0: return ""
@@ -82,7 +82,7 @@ def determinize(fa)->FA:
     states = [set()]
     transitions = [[set([])]*aplha]
 
-    
+
     for i in fa.entries:
         states[0]= states[0].union(set(i))
         for j in range(len(fa.nodes[i])):
