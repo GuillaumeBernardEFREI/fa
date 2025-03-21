@@ -4,7 +4,7 @@ from fun_episolon import *
 
 fa_folder = "automates"
 
-f = load_fa("auto1.txt",fa_folder)
+f = load_fa("#31",fa_folder)
 #f = complementarize(f)
 
 #print(f.isautomaton())
