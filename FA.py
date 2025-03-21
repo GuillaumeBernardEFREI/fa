@@ -2,11 +2,11 @@
 
 class FA:
     def __init__(self,entries_number,terminal_number,entries,terminals,nodes):
-        self.entries_number = entries_number #I
-        self.entries=entries.copy() #I
-        self.terminals=terminals.copy() #T
-        self.terminal_number= terminal_number #T
-        self.nodes = nodes.copy() #{Q : [p.a.q]}
+        self.entries_number:int = entries_number #I
+        self.entries:list[str]=entries.copy() #I
+        self.terminals:list[str]=terminals.copy() #T
+        self.terminal_number:int= terminal_number #T
+        self.nodes :dict[str,list[list]]= nodes.copy() #{Q : [p.a.q]}
         return
     def __str__(self):
         return ("---FA---\nnumber of entry : "+str(self.entries_number)

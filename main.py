@@ -1,5 +1,6 @@
 from FA import FA
 from functions import *
+from fun_episolon import *
 
 fa_folder = "automates"
 
