@@ -132,7 +132,7 @@ def display(fa):
     print("   |"+" "* int((columnswidth[0]-5)/2) +'State'+" "*int(ceil((columnswidth[0]-5)/2)),end="")
     for i in range(alpha):
         if( i !=0):
-            char =chr(97+i)
+            char =chr(96+i)
         else:
             char='ε'
         print("|"+" "*int((columnswidth[i+1]-1)/2) +char+" "*int(ceil((columnswidth[i+1]-1)/2)),end="")
