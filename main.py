@@ -4,13 +4,15 @@ from fun_episolon import *
 
 fa_folder = "automates"
 
-f = load_fa("auto1.txt",fa_folder)
+f = load_fa("#31",fa_folder)
 #f = complementarize(f)
 
 #print(f.isautomaton())
 display(f)
-#f.iscomplete()
-f = determinize(f)
+f=remove_epsilons(f)
 display(f)
-f.isdeterministic()
+#f.iscomplete()
+#f = determinize(f)
+#display(f)
+#f.isdeterministic()
 #word_recog(f)

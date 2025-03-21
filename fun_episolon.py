@@ -1,19 +1,22 @@
 from FA import FA
 
 def remove_epsilons(FA:FA) -> FA:
-    for node in range(0,len(FA.nodes)):
+    for node in FA.nodes:
         #for every epsilon transition
-        for transition in FA.nodes[str(node)][0]:
+        print(FA.nodes[node][0])
+        for transition in FA.nodes[node][0]:
+            print(node,transition)
             #add the transitions to the one of the current node.
             #then delete the transition itself.
-            FA.nodes=copytransitions(FA.nodes,str(node),transition)
+            FA.nodes=copytransitions(FA.nodes,node,transition)
             
             #Test if the node the transition leads to is a terminal
             if node not in FA.terminals and transition in FA.terminals:
                 FA.terminals.append(node)
                 FA.terminal_number+=1
 
-            FA.nodes[str(node)][0].remove(transition)
+        #resets everything and removes every transition inside (they have already been brought in)
+        FA.nodes[node][0]=list()
     FA=remove_unused_nodes(FA)
     return FA
 
@@ -51,7 +54,7 @@ def recursive_exploration(visited:list,FA:FA,cur_node):
         visited.append(cur_node)
         for transition in FA.nodes[cur_node]:
             for node in transition:
-                visited=recursive_exploration(visited,FA,str(node))
+                visited=recursive_exploration(visited,FA,node)
 
     #The node has already been visited so it did not go into the loop.
     return visited
