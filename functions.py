@@ -39,7 +39,7 @@ def load_fa(fa_path,fa_folder)->FA:
 
     entries = []
     for i in line.split(" ")[1:]:
-        entries.append(str(int(i)))
+        entries.append(i)
         
     #Initianalize the Terminals (T)
     line = f.readline().replace("\n","")
@@ -47,7 +47,7 @@ def load_fa(fa_path,fa_folder)->FA:
 
     terminals=[]
     for i in line.split(" ")[1:]:
-        terminals.append(str(int(i)))
+        terminals.append(i)
     
     #Initianalize the transitions
     f.readline().replace("\n","")
