@@ -4,11 +4,11 @@ from fun_episolon import *
 
 fa_folder = "automates"
 
-f = load_fa("#31",fa_folder)
+f = load_fa("#32",fa_folder)
 #f = complementarize(f)
 
 #print(f.isautomaton())
-display(f)
+#display(f)
 f=remove_epsilons(f)
 display(f)
 #f.iscomplete()

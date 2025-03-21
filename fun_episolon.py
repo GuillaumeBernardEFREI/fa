@@ -22,7 +22,7 @@ def remove_epsilons(FA:FA) -> FA:
 
 def copytransitions(nodes:dict[str,list[list]],copyto:str,copyfrom:str):
     #for each symbol in the alphabet
-    for i in range(1,len(nodes[copyto])):
+    for i in range(0,len(nodes[copyto])):
         #for each node that you can go to with the given symbol.
         for tocopy in nodes[copyfrom][i]:
             #if it's not already in the transition table (to not create duplicates)
