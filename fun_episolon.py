@@ -3,9 +3,7 @@ from FA import FA
 def remove_epsilons(FA:FA) -> FA:
     for node in FA.nodes:
         #for every epsilon transition
-        print(FA.nodes[node][0])
         for transition in FA.nodes[node][0]:
-            print(node,transition)
             #add the transitions to the one of the current node.
             #then delete the transition itself.
             FA.nodes=copytransitions(FA.nodes,node,transition)
