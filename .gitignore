@@ -1,8 +1,2 @@
-.idea/*
-__pycache__/*
+/.idea
 /__pycache__
-main.py
-__pycache__/FA.cpython-312.pyc
-*.pyc
-__pycache__/functions.cpython-312.pyc
-__pycache__/FA.cpython-312.pyc
