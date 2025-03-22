@@ -39,7 +39,7 @@ while True:
             number = int(number_input)
             if 1 <= number <= 44:
                 break
-        print("Invalid input. Please enter an integer between 1 and 44.")
+        print("Invalid input. Please enter an integer between 1 and 44 or the name of an existing automaton.")
 if special == 0:
     filename = f"#{number:02d}"  # Example: #01, #09, #32
     fa = load_fa(filename, FA_FOLDER)
@@ -157,7 +157,7 @@ while True:
                     number = int(number_input)
                     if 1 <= number <= 44:
                         break
-                print("Invalid input. Please enter an integer between 1 and 44.")
+                print("Invalid input. Please enter an integer between 1 and 44 or the name of an existing automaton.")
         if special == 0:
             filename = f"#{number:02d}"  # Example: #01, #09, #32
             fa = load_fa(filename, FA_FOLDER)
