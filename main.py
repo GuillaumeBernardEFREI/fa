@@ -43,15 +43,13 @@ while True:
 if special == 0:
     filename = f"#{number:02d}"  # Example: #01, #09, #32
     fa = load_fa(filename, FA_FOLDER)
-    print(f"\nAutomaton #{number} has been successfully loaded!\n")
 elif special == 1:
     filename = number_input
     fa = load_fa(filename, FA_FOLDER)
-    print(f"\nAutomaton {number_input} has been successfully loaded!\n")
 else:
     filename = number_input+".txt"
     fa = load_fa(filename, FA_FOLDER)
-    print(f"\nAutomaton {number_input}.txt has been successfully loaded!\n")
+print(f"\nAutomaton #{number} has been successfully loaded!\n")
 
 while True:
     input("Press enter to continue")
