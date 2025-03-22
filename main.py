@@ -1,4 +1,3 @@
-from functions import *
 from fun_episolon import *
 from load import load_fa
 from word_recog import word_recog
@@ -8,12 +7,13 @@ from FA import FA
 from SFA import standardize
 from DFA import determinize
 from CDFA import completion
-from MCDFA import minimize
+#from MCDFA import minimize
 
 fa_folder = "automates"
 
-f = load_fa("#32", fa_folder)
+f = load_fa("#03", fa_folder)
 
+display(f)
 """
 f = complementarize(f)
 f = determinize_and_completion(f)

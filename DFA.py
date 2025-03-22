@@ -1,6 +1,6 @@
 from FA import FA
 from fun_episolon import *
-from functions import set_to_str
+from general_func import set_to_str
 
 def determinize(fa) -> FA:
     if fa.isdeterministic(): return fa  # print("The automaton is already deterministic.")
