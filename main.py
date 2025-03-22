@@ -1,3 +1,7 @@
+#Execution traces done with the linux command:
+#python -X utf8 main.py > >(tee -a file.log)
+#So the print of the inputs is so that they are inside the execution traces.
+
 from load import *
 from display import *
 from SFA import *
@@ -9,6 +13,8 @@ from word_recog import *
 
 def ask_keep_changes(modified_fa, original_fa):
     choice = input("\nDo you want to keep the modified version of the automaton? (y/n): ").lower()
+    print(choice)
+    choice.replace(" ","").replace("\n","")
     return modified_fa if choice == "y" else original_fa
 
 
@@ -17,6 +23,7 @@ print("=== Automaton Selection ===")
 
 while True:
     number_input = input("Please enter an automaton number (1 to 44): ")
+    print(number_input)
     if number_input.isdigit():
         number = int(number_input)
         if 1 <= number <= 44:
@@ -48,6 +55,7 @@ while True:
     print("0.  Exit the program")
 
     choice = input("\nEnter your choice: ")
+    print(choice)
 
     if choice == "1":
         print("\n--- Automaton Display ---")

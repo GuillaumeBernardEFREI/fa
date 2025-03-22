@@ -3,6 +3,9 @@ from CDFA import completion
 from DFA import determinize
 
 def complementarize(fa) -> FA:
+    if not fa.isdeterministic() or not fa.iscomplete():
+        print("The automata is not a CDFA yet.\nSo we automatically determinized and completed it for you.")
+        fa=determinize_and_completion(fa)
     _terminals = [str(i) for i in range(len(fa.nodes))]
     for i in fa.terminals:
         try:

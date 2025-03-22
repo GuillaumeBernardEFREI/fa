@@ -88,6 +88,10 @@ recognized from one state and not recognized from the other. """
         terminals = []
         n_nodes = {}
         old_nodes = copy.deepcopy(fa.nodes)
+        for k, v in list(new_groups.items()):
+            if v == []:
+                new_groups.pop(k)
+                break
         for sta in new_groups.values():  # sta = states (plusieurs state)
             curr_transitions = old_nodes[sta[0]]
             for i_tr in range(1, len(curr_transitions)):  # start to 1 to ignore the column epsilon
@@ -130,6 +134,10 @@ recognized from one state and not recognized from the other. """
     terminals = []
     n_nodes = {}
     old_nodes = copy.deepcopy(fa.nodes)
+    for k, v in list(groups.items()):
+        if v == []:
+            groups.pop(k)
+            break
     for sta in groups.values():  # sta = states (plusieurs state)
         curr_transitions = old_nodes[sta[0]]
         for i_tr in range(1, len(curr_transitions)):  # start to 1 to ignore the column epsilon

@@ -1,4 +1,5 @@
 from FA import FA
+from DFA import determinize
 
 def completion(fa: FA) -> FA:  # completize ?
     """Construction of a complete deterministic automaton from a deterministic automaton FA, if it is not already complete.
@@ -13,7 +14,8 @@ def completion(fa: FA) -> FA:  # completize ?
         return fa
     # completing a non-deterministic automaton is not recommended / doesn't make sense
     if not fa.isdeterministic():
-        print("The automaton was not deterministic ; the completion have been done anyway.")
+        print("The automaton was not deterministic ; We have determinized it for you.")
+        fa=determinize(fa)
     # if not complete, we create a new FA (complete) :
 
     new_nodes = copy.deepcopy(fa.nodes)
