@@ -5,14 +5,11 @@ from general_func import set_to_str
 def determinize(fa) -> FA:
     if fa.isdeterministic(): return fa  # print("The automaton is already deterministic.")
 
-    isepsilon = False
-    for n in fa.nodes:  # automatic remove of epsilon if there is epsilon
-        if not isepsilon and len(fa.nodes[n][0]) != 0:
-            isepsilon = True
-    if isepsilon: fa = remove_epsilons(fa)
-    # OR
-    #import copy    # copy fa before pour éviter qu'il modif le fa original ??
-    #if isepsilon: fa = remove_epsilons(FA(fa.entries_number, fa.terminal_number, fa.entries.copy(), fa.terminals.copy(), copy.deepcopy(fa.nodes)))
+    # automatic remove of epsilon if there is epsilon
+    isepsilon = fa.uses_epsilon()
+    # if isepsilon: fa = remove_epsilons(fa)
+    import copy    # copy fa before pour éviter qu'il modif le fa original
+    if isepsilon: fa = remove_epsilons(FA(fa.entries_number, fa.terminal_number, fa.entries.copy(), fa.terminals.copy(), copy.deepcopy(fa.nodes)))
     
     aplha = len(fa.nodes[list(fa.nodes.keys())[0]])
     states = [set()]
