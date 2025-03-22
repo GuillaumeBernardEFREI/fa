@@ -7,6 +7,7 @@ class FA:
         self.terminals: list[str] = terminals.copy()  # T
         self.terminal_number: int = terminal_number  # T
         self.nodes: dict[str, list[list]] = nodes.copy()  # {Q : [p.a.q]}
+        self.type: str = "FA"
         return
 
     def __str__(self):
@@ -14,7 +15,8 @@ class FA:
                 + "\nentries : "+str(self.entries)
                 + "\nnumber of terminal : "+str(self.terminal_number)
                 + "\nterminals : "+str(self.terminals)
-                + "\nnodes : "+str(self.nodes))
+                + "\nnodes : "+str(self.nodes)
+                + f"\nType : {self.type}")
 
     def __eq__(self, value):
         return False

@@ -1,23 +1,30 @@
-from FA import FA
 from functions import *
 from fun_episolon import *
+from load import load_fa
+from word_recog import word_recog
+from display import display
+
+from FA import FA
+from SFA import standardize
+from DFA import determinize
+from CDFA import completion
+from MCDFA import minimize
 
 fa_folder = "automates"
 
 f = load_fa("#32", fa_folder)
-#f = complementarize(f)
 
+"""
+f = complementarize(f)
 f = determinize_and_completion(f)
-
 print(f.entries)
 print(f.terminals)
 print(f.nodes)
-
-#print(f.isautomaton())
-#display(f)
-#f=remove_epsilons(f)
+print(f.isautomaton())
 display(f)
-#f.iscomplete()
+f=remove_epsilons(f)
+display(f)
+f.iscomplete()
 f = determinize(f)
 display(f)
 f = standardize(f)
@@ -25,4 +32,5 @@ f = completion(f)
 display(f)
 f.iscomplete()
 f.isdeterministic()
-#word_recog(f)
+word_recog(f)
+"""
