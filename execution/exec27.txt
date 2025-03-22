@@ -1,0 +1,488 @@
+=== Automaton Selection ===
+Please enter an automaton number (1 to 44): 27
+
+Automaton #27 has been successfully loaded!
+
+Press enter to continue
+
+Current Automaton : #27, Type : FA
+=== Main Menu ===
+1.  Display the automaton
+2.  Check if the automaton is standard
+3.  Check if the automaton is deterministic
+4.  Check if the automaton is complete
+5.  Standardize the automaton
+6.  Determinize the automaton
+7.  Standardize and Complete the automaton
+8.  Minimize the automaton
+9.  Complete the automaton
+10. Remove epsilon transitions
+11. Test if a word is recognized by the automaton
+12. Load another automaton
+13. Complementarize the automata
+0.  Exit the program
+
+Enter your choice: 1
+
+--- Automaton Display ---
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│    0    │  0  │  0  │
+   ├─────────┼─────┼─────┤
+ ->│    1    │  2  │  2  │
+   ├─────────┼─────┼─────┤
+   │    2    │     │  0  │
+   └─────────┴─────┴─────┘
+Press enter to continue
+
+Current Automaton : #27, Type : FA
+=== Main Menu ===
+1.  Display the automaton
+2.  Check if the automaton is standard
+3.  Check if the automaton is deterministic
+4.  Check if the automaton is complete
+5.  Standardize the automaton
+6.  Determinize the automaton
+7.  Standardize and Complete the automaton
+8.  Minimize the automaton
+9.  Complete the automaton
+10. Remove epsilon transitions
+11. Test if a word is recognized by the automaton
+12. Load another automaton
+13. Complementarize the automata
+0.  Exit the program
+
+Enter your choice: 2
+
+--- Checking if automaton is standard ---
+The automata is standard.
+Press enter to continue
+
+Current Automaton : #27, Type : FA
+=== Main Menu ===
+1.  Display the automaton
+2.  Check if the automaton is standard
+3.  Check if the automaton is deterministic
+4.  Check if the automaton is complete
+5.  Standardize the automaton
+6.  Determinize the automaton
+7.  Standardize and Complete the automaton
+8.  Minimize the automaton
+9.  Complete the automaton
+10. Remove epsilon transitions
+11. Test if a word is recognized by the automaton
+12. Load another automaton
+13. Complementarize the automata
+0.  Exit the program
+
+Enter your choice: 3
+
+--- Checking if automaton is deterministic ---
+The automata is deterministic.
+Press enter to continue
+
+Current Automaton : #27, Type : FA
+=== Main Menu ===
+1.  Display the automaton
+2.  Check if the automaton is standard
+3.  Check if the automaton is deterministic
+4.  Check if the automaton is complete
+5.  Standardize the automaton
+6.  Determinize the automaton
+7.  Standardize and Complete the automaton
+8.  Minimize the automaton
+9.  Complete the automaton
+10. Remove epsilon transitions
+11. Test if a word is recognized by the automaton
+12. Load another automaton
+13. Complementarize the automata
+0.  Exit the program
+
+Enter your choice: 4
+
+--- Checking if automaton is complete ---
+The automata is not complete, there is no transition starting from node 2 using the character 'a'
+Press enter to continue
+
+Current Automaton : #27, Type : FA
+=== Main Menu ===
+1.  Display the automaton
+2.  Check if the automaton is standard
+3.  Check if the automaton is deterministic
+4.  Check if the automaton is complete
+5.  Standardize the automaton
+6.  Determinize the automaton
+7.  Standardize and Complete the automaton
+8.  Minimize the automaton
+9.  Complete the automaton
+10. Remove epsilon transitions
+11. Test if a word is recognized by the automaton
+12. Load another automaton
+13. Complementarize the automata
+0.  Exit the program
+
+Enter your choice: 5
+
+--- Standardizing the automaton ---
+The automata is standard.
+The automaton has been standardized.
+The standardized automaton is :
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│    0    │  0  │  0  │
+   ├─────────┼─────┼─────┤
+ ->│    1    │  2  │  2  │
+   ├─────────┼─────┼─────┤
+   │    2    │     │  0  │
+   └─────────┴─────┴─────┘
+
+Do you want to keep the modified version of the automaton? (y/n): n
+Press enter to continue
+
+Current Automaton : #27, Type : SFA
+=== Main Menu ===
+1.  Display the automaton
+2.  Check if the automaton is standard
+3.  Check if the automaton is deterministic
+4.  Check if the automaton is complete
+5.  Standardize the automaton
+6.  Determinize the automaton
+7.  Standardize and Complete the automaton
+8.  Minimize the automaton
+9.  Complete the automaton
+10. Remove epsilon transitions
+11. Test if a word is recognized by the automaton
+12. Load another automaton
+13. Complementarize the automata
+0.  Exit the program
+
+Enter your choice: 6
+
+--- Determinizing the automaton ---
+The automata is deterministic.
+The automaton has been determinized.
+The determinized automaton is :
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│    0    │  0  │  0  │
+   ├─────────┼─────┼─────┤
+ ->│    1    │  2  │  2  │
+   ├─────────┼─────┼─────┤
+   │    2    │     │  0  │
+   └─────────┴─────┴─────┘
+
+Do you want to keep the modified version of the automaton? (y/n): n
+Press enter to continue
+
+Current Automaton : #27, Type : DFA
+=== Main Menu ===
+1.  Display the automaton
+2.  Check if the automaton is standard
+3.  Check if the automaton is deterministic
+4.  Check if the automaton is complete
+5.  Standardize the automaton
+6.  Determinize the automaton
+7.  Standardize and Complete the automaton
+8.  Minimize the automaton
+9.  Complete the automaton
+10. Remove epsilon transitions
+11. Test if a word is recognized by the automaton
+12. Load another automaton
+13. Complementarize the automata
+0.  Exit the program
+
+Enter your choice: 7
+
+--- Standardizing and Completing the automaton ---
+The automata is standard.
+The automata is not complete, there is no transition starting from node 2 using the character 'a'
+The automata is deterministic.
+The automaton has been standardized and completed.
+The completed standardized automaton is :
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│    0    │  0  │  0  │
+   ├─────────┼─────┼─────┤
+ ->│    1    │  2  │  2  │
+   ├─────────┼─────┼─────┤
+   │    2    │  P  │  0  │
+   ├─────────┼─────┼─────┤
+   │    P    │  P  │  P  │
+   └─────────┴─────┴─────┘
+
+Do you want to keep the modified version of the automaton? (y/n): n
+Press enter to continue
+
+Current Automaton : #27, Type : SFA
+=== Main Menu ===
+1.  Display the automaton
+2.  Check if the automaton is standard
+3.  Check if the automaton is deterministic
+4.  Check if the automaton is complete
+5.  Standardize the automaton
+6.  Determinize the automaton
+7.  Standardize and Complete the automaton
+8.  Minimize the automaton
+9.  Complete the automaton
+10. Remove epsilon transitions
+11. Test if a word is recognized by the automaton
+12. Load another automaton
+13. Complementarize the automata
+0.  Exit the program
+
+Enter your choice: 8
+
+--- Minimizing the automaton ---
+For Minimization, we transform the FA in CDFA without non-accessible states if it was not already the case :
+The automata is deterministic.
+The automata is not complete, there is no transition starting from node 2 using the character 'a'
+The automata is not complete, there is no transition starting from node 2 using the character 'a'
+The automata is deterministic.
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│    0    │  0  │  0  │
+   ├─────────┼─────┼─────┤
+ ->│    1    │  2  │  2  │
+   ├─────────┼─────┼─────┤
+   │    2    │  P  │  0  │
+   ├─────────┼─────┼─────┤
+   │    P    │  P  │  P  │
+   └─────────┴─────┴─────┘
+
+Start of Minimization :
+
+instance n°0
+the groups (of the partition 0) are : 
+- group 0: 0, 
+- group 1: 1, 2, P, 
+
+New Transitions :
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│    0    │  0  │  0  │
+   ├─────────┼─────┼─────┤
+ ->│  {1.P}  │  2  │  2  │
+   ├─────────┼─────┼─────┤
+   │    2    │{1.P}│  0  │
+   └─────────┴─────┴─────┘
+instance n°1
+the groups (of the partition 1) are : 
+- group 0: 0, 
+- group 1: 1, P, 
+- group 4: 2, 
+
+New Transitions :
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│    0    │  0  │  0  │
+   ├─────────┼─────┼─────┤
+ ->│    1    │  2  │  2  │
+   ├─────────┼─────┼─────┤
+   │    P    │  P  │  P  │
+   ├─────────┼─────┼─────┤
+   │    2    │  P  │  0  │
+   └─────────┴─────┴─────┘
+instance n°2
+the groups (of the partition 2) are : 
+- group 0: 0, 
+- group 1: 1, 
+- group 5: P, 
+- group 4: 2, 
+
+New Transitions :
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│    0    │  0  │  0  │
+   ├─────────┼─────┼─────┤
+ ->│    1    │  2  │  2  │
+   ├─────────┼─────┼─────┤
+   │    P    │  P  │  P  │
+   ├─────────┼─────┼─────┤
+   │    2    │  P  │  0  │
+   └─────────┴─────┴─────┘
+instance n°3
+the groups (of the partition 3) are : 
+- group 0: 0, 
+- group 1: 1, 
+- group 5: P, 
+- group 4: 2, 
+
+final instance
+the groups (of the final partition) are : 
+- group 0: 0, 
+- group 1: 1, 
+- group 5: P, 
+- group 4: 2, 
+
+The automaton was already minimal.
+The automaton has been minimized.
+The minimized automaton is :
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│    0    │  0  │  0  │
+   ├─────────┼─────┼─────┤
+ ->│    1    │  2  │  2  │
+   ├─────────┼─────┼─────┤
+   │    P    │  P  │  P  │
+   ├─────────┼─────┼─────┤
+   │    2    │  P  │  0  │
+   └─────────┴─────┴─────┘
+
+Do you want to keep the modified version of the automaton? (y/n): y
+Press enter to continue
+
+Current Automaton : #27, Type : MCDFA
+=== Main Menu ===
+1.  Display the automaton
+2.  Check if the automaton is standard
+3.  Check if the automaton is deterministic
+4.  Check if the automaton is complete
+5.  Standardize the automaton
+6.  Determinize the automaton
+7.  Standardize and Complete the automaton
+8.  Minimize the automaton
+9.  Complete the automaton
+10. Remove epsilon transitions
+11. Test if a word is recognized by the automaton
+12. Load another automaton
+13. Complementarize the automata
+0.  Exit the program
+
+Enter your choice: 9
+
+--- Completing the automaton ---
+The automata is complete.
+The automaton has been completed.
+The completed automaton is :
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│    0    │  0  │  0  │
+   ├─────────┼─────┼─────┤
+ ->│    1    │  2  │  2  │
+   ├─────────┼─────┼─────┤
+   │    P    │  P  │  P  │
+   ├─────────┼─────┼─────┤
+   │    2    │  P  │  0  │
+   └─────────┴─────┴─────┘
+
+Do you want to keep the modified version of the automaton? (y/n): n
+Press enter to continue
+
+Current Automaton : #27, Type : CDFA
+=== Main Menu ===
+1.  Display the automaton
+2.  Check if the automaton is standard
+3.  Check if the automaton is deterministic
+4.  Check if the automaton is complete
+5.  Standardize the automaton
+6.  Determinize the automaton
+7.  Standardize and Complete the automaton
+8.  Minimize the automaton
+9.  Complete the automaton
+10. Remove epsilon transitions
+11. Test if a word is recognized by the automaton
+12. Load another automaton
+13. Complementarize the automata
+0.  Exit the program
+
+Enter your choice: 10
+
+--- Removing epsilon transitions ---
+Epsilon transitions have been removed.
+The automaton without epsilon is : 
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│    0    │  0  │  0  │
+   ├─────────┼─────┼─────┤
+ ->│    1    │  2  │  2  │
+   ├─────────┼─────┼─────┤
+   │    P    │  P  │  P  │
+   ├─────────┼─────┼─────┤
+   │    2    │  P  │  0  │
+   └─────────┴─────┴─────┘
+
+Do you want to keep the modified version of the automaton? (y/n): n
+Press enter to continue
+
+Current Automaton : #27, Type : CDFA
+=== Main Menu ===
+1.  Display the automaton
+2.  Check if the automaton is standard
+3.  Check if the automaton is deterministic
+4.  Check if the automaton is complete
+5.  Standardize the automaton
+6.  Determinize the automaton
+7.  Standardize and Complete the automaton
+8.  Minimize the automaton
+9.  Complete the automaton
+10. Remove epsilon transitions
+11. Test if a word is recognized by the automaton
+12. Load another automaton
+13. Complementarize the automata
+0.  Exit the program
+
+Enter your choice: 11
+
+--- Word Recognition ---
+
+Please enter the word to be tested.
+If you wish to stop testing you can enter the word in between the quotes : 	'#end'
+a
+
+Oh No!	The word you entered is not a part of the langage of this FA
+
+Please enter the word to be tested.
+If you wish to stop testing you can enter the word in between the quotes : 	'#end'
+
+Good!	The word you entered is a part of the langage of this FA
+
+Please enter the word to be tested.
+If you wish to stop testing you can enter the word in between the quotes : 	'#end'
+
+Good!	The word you entered is a part of the langage of this FA
+
+Please enter the word to be tested.
+If you wish to stop testing you can enter the word in between the quotes : 	'#end'
+
+Good!	The word you entered is a part of the langage of this FA
+
+Please enter the word to be tested.
+If you wish to stop testing you can enter the word in between the quotes : 	'#end'
+
+Oh No!	The word you entered is not a part of the langage of this FA
+
+Please enter the word to be tested.
+If you wish to stop testing you can enter the word in between the quotes : 	'#end'
+Press enter to continue
+
+Current Automaton : #27, Type : CDFA
+=== Main Menu ===
+1.  Display the automaton
+2.  Check if the automaton is standard
+3.  Check if the automaton is deterministic
+4.  Check if the automaton is complete
+5.  Standardize the automaton
+6.  Determinize the automaton
+7.  Standardize and Complete the automaton
+8.  Minimize the automaton
+9.  Complete the automaton
+10. Remove epsilon transitions
+11. Test if a word is recognized by the automaton
+12. Load another automaton
+13. Complementarize the automata
+0.  Exit the program
+
+Enter your choice: 0
+
+Exiting the program. Goodbye!
