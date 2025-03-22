@@ -33,7 +33,7 @@ class FA:
             print("There are multiples entries, the automata is not deterministic")
             return False
         for n in self.nodes:
-            if len(self.nodes[n][0]) != 0:  # if there is an epsilon transition, it's not deterministic
+            if self.uses_epsilon():
                 print("There is a transition labelled by epsilon, the automata is not deterministic")
                 return False
             for i in range(1, len(self.nodes[n])):  # start to 1 to ignore the (empty) column epsilon
@@ -107,3 +107,11 @@ The result must figure on screen. If the automaton is not complete, your program
         """
         print("The automata is standard.")
         return True
+    
+    def uses_epsilon(self) -> bool:
+        """This function returns True if the FA has an epsilon in it else returns False."""
+        for n in self.nodes:
+            if len(self.nodes[n][0]) != 0:  # if there is an epsilon transition, it's not deterministic
+                return True 
+        return False
+         

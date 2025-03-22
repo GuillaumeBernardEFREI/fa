@@ -11,7 +11,7 @@ from CDFA import completion
 
 fa_folder = "automates"
 
-f = load_fa("#03", fa_folder)
+f = load_fa("#32", fa_folder)
 
 display(f)
 """
