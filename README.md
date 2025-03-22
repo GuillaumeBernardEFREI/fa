@@ -44,7 +44,7 @@ Test if a word is recognized
 
 Load another automaton
 
-
+Complementarize the automata
 
 
 Automaton Files
