@@ -5,6 +5,7 @@ def standardize(fa: FA) -> FA:
     # we first check if it's standardized (only has 1 entry and no transitions going back to it)
     if fa.isstandard():
         # print("The automaton is already standard")
+        fa.type="SFA"
         return fa
     # if not we create a new FA (to not modify the initial one)
     else:

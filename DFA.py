@@ -3,7 +3,9 @@ from fun_episolon import *
 from general_func import set_to_str
 
 def determinize(fa) -> FA:
-    if fa.isdeterministic(): return fa  # print("The automaton is already deterministic.")
+    if fa.isdeterministic(): 
+        fa.type="DFA"
+        return fa  # print("The automaton is already deterministic.")
 
     # automatic remove of epsilon if there is epsilon
     isepsilon = fa.uses_epsilon()

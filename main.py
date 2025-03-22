@@ -78,6 +78,7 @@ while True:
         new_fa = standardize(fa)
         print("The automaton has been standardized.\nThe standardized automaton is :")
         display(new_fa)
+        print(new_fa)
         fa = ask_keep_changes(new_fa, fa)
 
     elif choice == "6":
