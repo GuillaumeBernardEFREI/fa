@@ -11,6 +11,7 @@ def completion(fa: FA) -> FA:  # completize ?
     # check it's already complete
     if fa.iscomplete():
         # print("The automaton is already complete.")
+        fa.type="CDFA"
         return fa
     # completing a non-deterministic automaton is not recommended / doesn't make sense
     if not fa.isdeterministic():
