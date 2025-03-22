@@ -1,11 +1,11 @@
 === Automaton Selection ===
-Please enter an automaton number (1 to 44): 2
+Please enter an automaton number (1 to 44): 6
 
-Automaton #2 has been successfully loaded!
+Automaton #6 has been successfully loaded!
 
 Press enter to continue
 
-Current Automaton : #02, Type : FA
+Current Automaton : #06, Type : FA
 === Main Menu ===
 1.  Display the automaton
 2.  Check if the automaton is standard
@@ -24,14 +24,20 @@ Current Automaton : #02, Type : FA
 Enter your choice: 1
 
 --- Automaton Display ---
-   ┌─────────┬─────┐
-   │  State  │  a  │
-   ├─────────┼─────┤
-<->│    0    │  0  │
-   └─────────┴─────┘
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│    0    │     │     │
+   ├─────────┼─────┼─────┤
+ ->│    1    │  2  │     │
+   ├─────────┼─────┼─────┤
+ <-│    2    │     │     │
+   ├─────────┼─────┼─────┤
+ ->│    3    │     │  0  │
+   └─────────┴─────┴─────┘
 Press enter to continue
 
-Current Automaton : #02, Type : FA
+Current Automaton : #06, Type : FA
 === Main Menu ===
 1.  Display the automaton
 2.  Check if the automaton is standard
@@ -50,10 +56,10 @@ Current Automaton : #02, Type : FA
 Enter your choice: 2
 
 --- Checking if automaton is standard ---
-there is a transition going to the entry, the automata is not standart
+There are multiples entries, the automata is not standart
 Press enter to continue
 
-Current Automaton : #02, Type : FA
+Current Automaton : #06, Type : FA
 === Main Menu ===
 1.  Display the automaton
 2.  Check if the automaton is standard
@@ -72,10 +78,10 @@ Current Automaton : #02, Type : FA
 Enter your choice: 3
 
 --- Checking if automaton is deterministic ---
-The automata is deterministic.
+There are multiples entries, the automata is not deterministic
 Press enter to continue
 
-Current Automaton : #02, Type : FA
+Current Automaton : #06, Type : FA
 === Main Menu ===
 1.  Display the automaton
 2.  Check if the automaton is standard
@@ -94,10 +100,10 @@ Current Automaton : #02, Type : FA
 Enter your choice: 4
 
 --- Checking if automaton is complete ---
-The automata is complete.
+The automata is not complete, there is no transition starting from node 0 using the character 'a'
 Press enter to continue
 
-Current Automaton : #02, Type : FA
+Current Automaton : #06, Type : FA
 === Main Menu ===
 1.  Display the automaton
 2.  Check if the automaton is standard
@@ -116,21 +122,27 @@ Current Automaton : #02, Type : FA
 Enter your choice: 5
 
 --- Standardizing the automaton ---
-there is a transition going to the entry, the automata is not standart
+There are multiples entries, the automata is not standart
 The automaton has been standardized.
 The standardized automaton is :
-   ┌─────────┬─────┐
-   │  State  │  a  │
-   ├─────────┼─────┤
- <-│    0    │  0  │
-   ├─────────┼─────┤
- ->│    I    │  0  │
-   └─────────┴─────┘
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│    0    │     │     │
+   ├─────────┼─────┼─────┤
+   │    1    │  2  │     │
+   ├─────────┼─────┼─────┤
+ <-│    2    │     │     │
+   ├─────────┼─────┼─────┤
+   │    3    │     │  0  │
+   ├─────────┼─────┼─────┤
+ ->│    I    │  2  │  0  │
+   └─────────┴─────┴─────┘
 
 Do you want to keep the modified version of the automaton? (y/n): n
 Press enter to continue
 
-Current Automaton : #02, Type : FA
+Current Automaton : #06, Type : FA
 === Main Menu ===
 1.  Display the automaton
 2.  Check if the automaton is standard
@@ -149,19 +161,23 @@ Current Automaton : #02, Type : FA
 Enter your choice: 6
 
 --- Determinizing the automaton ---
-The automata is deterministic.
+There are multiples entries, the automata is not deterministic
 The automaton has been determinized.
 The determinized automaton is :
-   ┌─────────┬─────┐
-   │  State  │  a  │
-   ├─────────┼─────┤
-<->│    0    │  0  │
-   └─────────┴─────┘
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ ->│  {1.3}  │  2  │  0  │
+   ├─────────┼─────┼─────┤
+ <-│    2    │     │     │
+   ├─────────┼─────┼─────┤
+ <-│    0    │     │     │
+   └─────────┴─────┴─────┘
 
 Do you want to keep the modified version of the automaton? (y/n): y
 Press enter to continue
 
-Current Automaton : #02, Type : DFA
+Current Automaton : #06, Type : DFA
 === Main Menu ===
 1.  Display the automaton
 2.  Check if the automaton is standard
@@ -180,22 +196,27 @@ Current Automaton : #02, Type : DFA
 Enter your choice: 7
 
 --- Standardizing and Completing the automaton ---
-there is a transition going to the entry, the automata is not standart
-The automata is complete.
+The automata is standard.
+The automata is not complete, there is no transition starting from node 2 using the character 'a'
+The automata is deterministic.
 The automaton has been standardized and completed.
 The completed standardized automaton is :
-   ┌─────────┬─────┐
-   │  State  │  a  │
-   ├─────────┼─────┤
- <-│    0    │  0  │
-   ├─────────┼─────┤
- ->│    I    │  0  │
-   └─────────┴─────┘
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ ->│  {1.3}  │  2  │  0  │
+   ├─────────┼─────┼─────┤
+ <-│    2    │  P  │  P  │
+   ├─────────┼─────┼─────┤
+ <-│    0    │  P  │  P  │
+   ├─────────┼─────┼─────┤
+   │    P    │  P  │  P  │
+   └─────────┴─────┴─────┘
 
-Do you want to keep the modified version of the automaton? (y/n): n
+Do you want to keep the modified version of the automaton? (y/n): y
 Press enter to continue
 
-Current Automaton : #02, Type : DFA
+Current Automaton : #06, Type : CDFA
 === Main Menu ===
 1.  Display the automaton
 2.  Check if the automaton is standard
@@ -217,56 +238,79 @@ Enter your choice: 8
 For Minimization, we transform the FA in CDFA without non-accessible states if it was not already the case :
 The automata is deterministic.
 The automata is complete.
-   ┌─────────┬─────┐
-   │  State  │  a  │
-   ├─────────┼─────┤
-<->│    0    │  0  │
-   └─────────┴─────┘
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ ->│  {1.3}  │  2  │  0  │
+   ├─────────┼─────┼─────┤
+ <-│    2    │  P  │  P  │
+   ├─────────┼─────┼─────┤
+ <-│    0    │  P  │  P  │
+   ├─────────┼─────┼─────┤
+   │    P    │  P  │  P  │
+   └─────────┴─────┴─────┘
 
 Start of Minimization :
 
 instance n°0
 the groups (of the partition 0) are : 
-- group 0: 0, 
-- group 1: 
+- group 0: 2, 0, 
+- group 1: {1.3}, P, 
 
 New Transitions :
-   ┌─────────┬─────┐
-   │  State  │  a  │
-   ├─────────┼─────┤
-<->│    0    │  0  │
-   └─────────┴─────┘
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│  {0.2}  │  P  │  P  │
+   ├─────────┼─────┼─────┤
+ ->│  {1.3}  │{0.2}│{0.2}│
+   ├─────────┼─────┼─────┤
+   │    P    │  P  │  P  │
+   └─────────┴─────┴─────┘
 instance n°1
 the groups (of the partition 1) are : 
-- group 0: 0, 
+- group 0: 2, 0, 
+- group 1: {1.3}, 
+- group 4: P, 
 
 New Transitions :
-   ┌─────────┬─────┐
-   │  State  │  a  │
-   ├─────────┼─────┤
-<->│    0    │  0  │
-   └─────────┴─────┘
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│  {0.2}  │  P  │  P  │
+   ├─────────┼─────┼─────┤
+ ->│  {1.3}  │{0.2}│{0.2}│
+   ├─────────┼─────┼─────┤
+   │    P    │  P  │  P  │
+   └─────────┴─────┴─────┘
 instance n°2
 the groups (of the partition 2) are : 
-- group 0: 0, 
+- group 0: 2, 0, 
+- group 1: {1.3}, 
+- group 4: P, 
 
 final instance
 the groups (of the final partition) are : 
-- group 0: 0, 
+- group 0: 2, 0, 
+- group 1: {1.3}, 
+- group 4: P, 
 
-The automaton was already minimal.
 The automaton has been minimized.
 The minimized automaton is :
-   ┌─────────┬─────┐
-   │  State  │  a  │
-   ├─────────┼─────┤
-<->│    0    │  0  │
-   └─────────┴─────┘
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│  {0.2}  │  P  │  P  │
+   ├─────────┼─────┼─────┤
+ ->│  {1.3}  │{0.2}│{0.2}│
+   ├─────────┼─────┼─────┤
+   │    P    │  P  │  P  │
+   └─────────┴─────┴─────┘
 
-Do you want to keep the modified version of the automaton? (y/n): n
+Do you want to keep the modified version of the automaton? (y/n): y
 Press enter to continue
 
-Current Automaton : #02, Type : DFA
+Current Automaton : #06, Type : MCDFA
 === Main Menu ===
 1.  Display the automaton
 2.  Check if the automaton is standard
@@ -288,16 +332,20 @@ Enter your choice: 9
 The automata is complete.
 The automaton has been completed.
 The completed automaton is :
-   ┌─────────┬─────┐
-   │  State  │  a  │
-   ├─────────┼─────┤
-<->│    0    │  0  │
-   └─────────┴─────┘
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│  {0.2}  │  P  │  P  │
+   ├─────────┼─────┼─────┤
+ ->│  {1.3}  │{0.2}│{0.2}│
+   ├─────────┼─────┼─────┤
+   │    P    │  P  │  P  │
+   └─────────┴─────┴─────┘
 
 Do you want to keep the modified version of the automaton? (y/n): n
 Press enter to continue
 
-Current Automaton : #02, Type : CDFA
+Current Automaton : #06, Type : CDFA
 === Main Menu ===
 1.  Display the automaton
 2.  Check if the automaton is standard
@@ -318,16 +366,20 @@ Enter your choice: 10
 --- Removing epsilon transitions ---
 Epsilon transitions have been removed.
 The automaton without epsilon is : 
-   ┌─────────┬─────┐
-   │  State  │  a  │
-   ├─────────┼─────┤
-<->│    0    │  0  │
-   └─────────┴─────┘
+   ┌─────────┬─────┬─────┐
+   │  State  │  a  │  b  │
+   ├─────────┼─────┼─────┤
+ <-│  {0.2}  │  P  │  P  │
+   ├─────────┼─────┼─────┤
+ ->│  {1.3}  │{0.2}│{0.2}│
+   ├─────────┼─────┼─────┤
+   │    P    │  P  │  P  │
+   └─────────┴─────┴─────┘
 
 Do you want to keep the modified version of the automaton? (y/n): n
 Press enter to continue
 
-Current Automaton : #02, Type : CDFA
+Current Automaton : #06, Type : CDFA
 === Main Menu ===
 1.  Display the automaton
 2.  Check if the automaton is standard
@@ -349,7 +401,27 @@ Enter your choice: 11
 
 Please enter the word to be tested.
 If you wish to stop testing you can enter the word in between the quotes : 	'#end'
-a
+aaa
+
+Oh No!	The word you entered is not a part of the langage of this FA
+
+Please enter the word to be tested.
+If you wish to stop testing you can enter the word in between the quotes : 	'#end'
+
+Oh No!	The word you entered is not a part of the langage of this FA
+
+Please enter the word to be tested.
+If you wish to stop testing you can enter the word in between the quotes : 	'#end'
+
+Oh No!	The word you entered is not a part of the langage of this FA
+
+Please enter the word to be tested.
+If you wish to stop testing you can enter the word in between the quotes : 	'#end'
+
+Oh No!	The word you entered is not a part of the langage of this FA
+
+Please enter the word to be tested.
+If you wish to stop testing you can enter the word in between the quotes : 	'#end'
 
 Good!	The word you entered is a part of the langage of this FA
 
@@ -362,7 +434,7 @@ Please enter the word to be tested.
 If you wish to stop testing you can enter the word in between the quotes : 	'#end'
 Press enter to continue
 
-Current Automaton : #02, Type : CDFA
+Current Automaton : #06, Type : CDFA
 === Main Menu ===
 1.  Display the automaton
 2.  Check if the automaton is standard
