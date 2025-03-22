@@ -14,7 +14,7 @@ https://github.com/GuillaumeBernardEFREI/fa
 ...
 Automata Manipulation Project
 This project is a Python-based console application designed to manipulate and test Finite Automata (FA).
-It allows you to load one of 44 predefined automata and perform a variety of operations including display, standardization, determinization, completion, epsilon removal, minimization, and word recognition.
+It allows you to load one of 44 predefined automata or any other custom predefined automata and perform a variety of operations including display, standardization, determinization, completion, epsilon removal, minimization, and word recognition.
 
 Available Actions
 
