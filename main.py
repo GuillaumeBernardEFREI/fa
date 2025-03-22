@@ -1,6 +1,7 @@
 #Execution traces done with the linux command:
 #python -X utf8 main.py > >(tee -a file.log)
 #So the print of the inputs is so that they are inside the execution traces.
+import os
 
 from load import *
 from display import *
@@ -22,19 +23,35 @@ def ask_keep_changes(modified_fa, original_fa):
 FA_FOLDER = "automates"  # Folder containing the automata
 print("=== Automaton Selection ===")
 
+special = 0
 while True:
-    number_input = input("Please enter an automaton number (1 to 44): ")
-    print(number_input)
-    if number_input.isdigit():
-        number = int(number_input)
-        if 1 <= number <= 44:
+    number_input = input("Please enter an automaton number (1 to 44) or the name of an existing automaton : ")
+    if not number_input.isdigit():
+        if os.path.isfile(os.path.join(FA_FOLDER, number_input)):
+            special = 1
             break
-    print("Invalid input. Please enter an integer between 1 and 44.")
-filename = f"#{number:02d}"  # Example: #01, #09, #32
-fa = load_fa(filename, FA_FOLDER)
-print(f"\nAutomaton #{number} has been successfully loaded!\n")
-
-
+        if os.path.isfile(os.path.join(FA_FOLDER, number_input+".txt")):
+            special = 2
+            break
+    if special == 0:
+        print(number_input)
+        if number_input.isdigit():
+            number = int(number_input)
+            if 1 <= number <= 44:
+                break
+        print("Invalid input. Please enter an integer between 1 and 44.")
+if special == 0:
+    filename = f"#{number:02d}"  # Example: #01, #09, #32
+    fa = load_fa(filename, FA_FOLDER)
+    print(f"\nAutomaton #{number} has been successfully loaded!\n")
+elif special == 1:
+    filename = number_input
+    fa = load_fa(filename, FA_FOLDER)
+    print(f"\nAutomaton {number_input} has been successfully loaded!\n")
+else:
+    filename = number_input+".txt"
+    fa = load_fa(filename, FA_FOLDER)
+    print(f"\nAutomaton {number_input}.txt has been successfully loaded!\n")
 
 while True:
     input("Press enter to continue")
@@ -124,16 +141,35 @@ while True:
 
     elif choice == "12":
         print("=== Automaton Selection ===")
+        special = 0
         while True:
-            number_input = input("Please enter an automaton number (1 to 44): ")
-            if number_input.isdigit():
-                number = int(number_input)
-                if 1 <= number <= 44:
+            number_input = input("Please enter an automaton number (1 to 44) or the name of an existing automaton : ")
+            if not number_input.isdigit():
+                if os.path.isfile(os.path.join(FA_FOLDER, number_input)):
+                    special = 1
                     break
-            print("Invalid input. Please enter an integer between 1 and 44.")
-        filename = f"#{number:02d}"  # Example: #01, #09, #32
-        fa = load_fa(filename, FA_FOLDER)
-        print(f"\nAutomaton #{number} has been successfully loaded!\n")
+                if os.path.isfile(os.path.join(FA_FOLDER, number_input + ".txt")):
+                    special = 2
+                    break
+            if special == 0:
+                print(number_input)
+                if number_input.isdigit():
+                    number = int(number_input)
+                    if 1 <= number <= 44:
+                        break
+                print("Invalid input. Please enter an integer between 1 and 44.")
+        if special == 0:
+            filename = f"#{number:02d}"  # Example: #01, #09, #32
+            fa = load_fa(filename, FA_FOLDER)
+            print(f"\nAutomaton #{number} has been successfully loaded!\n")
+        elif special == 1:
+            filename = number_input
+            fa = load_fa(filename, FA_FOLDER)
+            print(f"\nAutomaton {number_input} has been successfully loaded!\n")
+        else:
+            filename = number_input + ".txt"
+            fa = load_fa(filename, FA_FOLDER)
+            print(f"\nAutomaton {number_input}.txt has been successfully loaded!\n")
 
     elif choice == "13":
         print("\n--- Complementarize the automaton ---")
