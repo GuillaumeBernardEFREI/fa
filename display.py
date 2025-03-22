@@ -10,7 +10,8 @@ def display(fa):
         alpha = len(fa.nodes[i])
         break
 
-    columnswidth=[9]
+    #minimum size of the 1st line is 9 char but can be more if the nodes take more chars to write.
+    columnswidth=[9 if len(max(fa.nodes,key=len))<9 else len(max(fa.nodes,key=len)) ]
     for i in range(not epsilon,alpha):
         columnswidth.append(5)        
         for j in fa.nodes:

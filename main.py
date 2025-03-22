@@ -3,12 +3,15 @@ from display import *
 from SFA import *
 from DFA import *
 from CDFA import *
+from MCDFA import *
 from fun_episolon import *
 from word_recog import *
 
 def ask_keep_changes(modified_fa, original_fa):
     choice = input("\nDo you want to keep the modified version of the automaton? (y/n): ").lower()
     return modified_fa if choice == "y" else original_fa
+
+
 FA_FOLDER = "automates"  # Folder containing the automata
 print("=== Automaton Selection ===")
 
@@ -22,6 +25,9 @@ while True:
 filename = f"#{number:02d}"  # Example: #01, #09, #32
 fa = load_fa(filename, FA_FOLDER)
 print(f"\nAutomaton #{number} has been successfully loaded!\n")
+
+
+
 while True:
     input("Press enter to continue")
 
@@ -83,7 +89,7 @@ while True:
 
     elif choice == "8":
         print("\n--- Minimizing the automaton ---")
-        #new_fa = minimize(fa)
+        new_fa = minimize(fa)
         print("The automaton has been minimized.\nThe minimized automaton is :")
         display(new_fa)
         fa = ask_keep_changes(new_fa, fa)

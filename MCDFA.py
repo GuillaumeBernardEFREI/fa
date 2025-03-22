@@ -1,6 +1,7 @@
 from FA import FA
 from functions import determinize_and_completion
 from general_func import set_to_str
+from CDFA import completion
 
 def minimize(fa: FA) -> FA:
     """Construct a minimized version of the CDFA passed in argument.
@@ -88,7 +89,7 @@ recognized from one state and not recognized from the other. """
 
     n_nodes = {}
     for elt in states:
-        n_nodes[elt] = ... transitions
+        n_nodes[elt] = ... #transitions
     MCDFa = FA(len(initials), len(terminals), initials, terminals, n_nodes)
     MCDFa.type = "MCDFA"
     return MCDFa
