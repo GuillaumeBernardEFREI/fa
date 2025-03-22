@@ -1,36 +1,109 @@
+from load import *
+from display import *
+from SFA import *
+from DFA import *
+from CDFA import *
 from fun_episolon import *
-from load import load_fa
-from word_recog import word_recog
-from display import display
+from word_recog import *
+import os
 
-from FA import FA
-from SFA import standardize
-from DFA import determinize
-from CDFA import completion
-#from MCDFA import minimize
+def ask_keep_changes(modified_fa, original_fa):
+    choice = input("\nDo you want to keep the modified version of the automaton? (y/n): ").lower()
+    return modified_fa if choice == "y" else original_fa
+FA_FOLDER = "automates"  # Folder containing the automata
+print("=== Automaton Selection ===")
+number = int(input("Please enter an automaton number (1 to 44): "))
+while not(1 <= number <= 44):
+    print("Invalid input. Please enter an integer between 1 and 44.")
+    number = int(input("Please enter an automaton number (1 to 44): "))
+filename = f"#{number:02d}"  # Example: #01, #09, #32
+fa = load_fa(filename, FA_FOLDER)
+print(f"\nAutomaton #{number} has been successfully loaded!\n")
+while True:
+    input("Press enter to continue")
+    print("\n=== Main Menu ===")
+    print("1.  Display the automaton")
+    print("2.  Check if the automaton is standard")
+    print("3.  Check if the automaton is deterministic")
+    print("4.  Check if the automaton is complete")
+    print("5.  Standardize the automaton")
+    print("6.  Determinize the automaton")
+    print("7.  Standardize and Complete the automaton")
+    print("8.  Minimize the automaton")
+    print("9.  Complete the automaton")
+    print("10. Remove epsilon transitions")
+    print("11. Test if a word is recognized by the automaton")
+    print("12. Load another automaton")
+    print("0.  Exit the program")
 
-fa_folder = "automates"
+    choice = input("\nEnter your choice: ")
 
-f = load_fa("#42", fa_folder)
+    if choice == "1":
+        print("\n--- Automaton Display ---")
+        display(fa)
 
-display(f)
-"""
-f = complementarize(f)
-f = determinize_and_completion(f)
-print(f.entries)
-print(f.terminals)
-print(f.nodes)
-print(f.isautomaton())
-display(f)
-f=remove_epsilons(f)
-display(f)
-f.iscomplete()
-f = determinize(f)
-display(f)
-f = standardize(f)
-f = completion(f)
-display(f)
-f.iscomplete()
-f.isdeterministic()
-word_recog(f)
-"""
+    elif choice == "2":
+        print("\n--- Checking if automaton is standard ---")
+        fa.isstandard()
+
+    elif choice == "3":
+        print("\n--- Checking if automaton is deterministic ---")
+        fa.isdeterministic()
+
+    elif choice == "4":
+        print("\n--- Checking if automaton is complete ---")
+        fa.iscomplete()
+
+    elif choice == "5":
+        print("\n--- Standardizing the automaton ---")
+        new_fa = standardize(fa)
+        print("The automaton has been standardized.")
+        fa = ask_keep_changes(new_fa, fa)
+
+    elif choice == "6":
+        print("\n--- Determinizing the automaton ---")
+        new_fa = determinize(fa)
+        print("The automaton has been determinized.")
+        fa = ask_keep_changes(new_fa, fa)
+
+    elif choice == "7":
+        print("\n--- Standardizing and Completing the automaton ---")
+        new_fa = standardize(fa)
+        new_fa = completion(new_fa)
+        print("The automaton has been standardized and completed.")
+        fa = ask_keep_changes(new_fa, fa)
+
+    elif choice == "8":
+        print("\n--- Minimizing the automaton ---")
+        new_fa = minimize(fa)
+        print("The automaton has been minimized.")
+        fa = ask_keep_changes(new_fa, fa)
+
+    elif choice == "9":
+        print("\n--- Completing the automaton ---")
+        new_fa = completion(fa)
+        print("The automaton has been completed.")
+        fa = ask_keep_changes(new_fa, fa)
+
+    elif choice == "10":
+        print("\n--- Removing epsilon transitions ---")
+        new_fa = remove_epsilons(fa)
+        print("Epsilon transitions have been removed.")
+        fa = ask_keep_changes(new_fa, fa)
+
+    elif choice == "11":
+        print("\n--- Word Recognition ---")
+        word_recog(fa)
+
+    elif choice == "12":
+        print("=== Automaton Selection ===")
+        number = int(input("Please enter an automaton number (1 to 44): "))
+        while not(1 <= number <= 44):
+            print("Invalid input. Please enter an integer between 1 and 44.")
+            number = int(input("Please enter an automaton number (1 to 44): "))
+        filename = f"#{number:02d}"  # Example: #01, #09, #32
+        fa = load_fa(filename, FA_FOLDER)
+        print(f"\nAutomaton #{number} has been successfully loaded!\n")
+    else:
+        print("Invalid option. Please enter a number from 0 to 12.")
+
