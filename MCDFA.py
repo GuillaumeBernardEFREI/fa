@@ -7,8 +7,8 @@ def minimize(fa: FA) -> FA:
     """Construct a minimized version of the CDFA passed in argument.
     If the algorithm finds out that the automaton was already minimal, the program tell the user about it.
     there is no verification if the automaton is already minimal.
-    Your program must display successive partitions, as well as transitions
-    expressed in terms of parts (groups), all the way along the minimization process. Make that display easily readable
+    The program display successive partitions, as well as transitions expressed in terms of parts (groups),
+    all the way along the minimization process.
     :param complete deterministic fa:
     :return minimized complete deterministic fa:
     """
@@ -54,7 +54,7 @@ def minimize(fa: FA) -> FA:
 
         # we analyse 1 group at a time
         for group_k in groups.keys():
-            """In an iterative fashion, we look if the states belonging to the same group 
+            """From course : In an iterative fashion, we look if the states belonging to the same group 
 should be separated: this is the case if we can detect at least one suffix 
 recognized from one state and not recognized from the other. """
             if len(groups[group_k]) > 1:  # cannot split a group with less than 2 states
@@ -88,7 +88,7 @@ recognized from one state and not recognized from the other. """
         terminals = []
         n_nodes = {}
         old_nodes = copy.deepcopy(fa.nodes)
-        for k, v in list(new_groups.items()):
+        for k, v in list(new_groups.items()):  # fix for automaton #02, #04 & #37 = case only 1 intial group (all states Terminals or Non-Terminals)
             if v == []:
                 new_groups.pop(k)
                 break
@@ -134,7 +134,7 @@ recognized from one state and not recognized from the other. """
     terminals = []
     n_nodes = {}
     old_nodes = copy.deepcopy(fa.nodes)
-    for k, v in list(groups.items()):
+    for k, v in list(groups.items()):  # fix for automaton #02, #04 & #37 = case only 1 intial group (all states Terminals or Non-Terminals)
         if v == []:
             groups.pop(k)
             break
