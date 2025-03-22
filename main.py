@@ -10,6 +10,7 @@ from CDFA import *
 from MCDFA import *
 from fun_episolon import *
 from word_recog import *
+from functions import *
 
 def ask_keep_changes(modified_fa, original_fa):
     choice = input("\nDo you want to keep the modified version of the automaton? (y/n): ").lower()
@@ -52,6 +53,7 @@ while True:
     print("10. Remove epsilon transitions")
     print("11. Test if a word is recognized by the automaton")
     print("12. Load another automaton")
+    print("13. Complementarize the automata")
     print("0.  Exit the program")
 
     choice = input("\nEnter your choice: ")
@@ -132,6 +134,14 @@ while True:
         filename = f"#{number:02d}"  # Example: #01, #09, #32
         fa = load_fa(filename, FA_FOLDER)
         print(f"\nAutomaton #{number} has been successfully loaded!\n")
+
+    elif choice == "13":
+        print("\n--- Complementarize the automaton ---")
+        new_fa = complementarize(fa)
+        print("The automaton has been complementarized.\nThe complementarized automaton is :")
+        display(new_fa)
+        fa = ask_keep_changes(new_fa, fa)
+
     elif choice =="0":
         print("\nExiting the program. Goodbye!")
         break
