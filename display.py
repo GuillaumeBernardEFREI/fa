@@ -2,7 +2,8 @@ from FA import FA
 from math import ceil
 
 def display(fa):
-
+    """This display function is made to help us see an automaton.
+    Sponsored by : https://www.compart.com/en/unicode/block/U+2500"""
     epsilon=fa.uses_epsilon()
 
     for i in fa.nodes:
