@@ -11,10 +11,14 @@ def ask_keep_changes(modified_fa, original_fa):
     return modified_fa if choice == "y" else original_fa
 FA_FOLDER = "automates"  # Folder containing the automata
 print("=== Automaton Selection ===")
-number = int(input("Please enter an automaton number (1 to 44): "))
-while not(1 <= number <= 44):
+
+while True:
+    number_input = input("Please enter an automaton number (1 to 44): ")
+    if number_input.isdigit():
+        number = int(number_input)
+        if 1 <= number <= 44:
+            break
     print("Invalid input. Please enter an integer between 1 and 44.")
-    number = int(input("Please enter an automaton number (1 to 44): "))
 filename = f"#{number:02d}"  # Example: #01, #09, #32
 fa = load_fa(filename, FA_FOLDER)
 print(f"\nAutomaton #{number} has been successfully loaded!\n")
@@ -104,13 +108,19 @@ while True:
 
     elif choice == "12":
         print("=== Automaton Selection ===")
-        number = int(input("Please enter an automaton number (1 to 44): "))
-        while not(1 <= number <= 44):
+        while True:
+            number_input = input("Please enter an automaton number (1 to 44): ")
+            if number_input.isdigit():
+                number = int(number_input)
+                if 1 <= number <= 44:
+                    break
             print("Invalid input. Please enter an integer between 1 and 44.")
-            number = int(input("Please enter an automaton number (1 to 44): "))
         filename = f"#{number:02d}"  # Example: #01, #09, #32
         fa = load_fa(filename, FA_FOLDER)
         print(f"\nAutomaton #{number} has been successfully loaded!\n")
+    elif choice =="0":
+        print("\nExiting the program. Goodbye!")
+        break
     else:
         print("Invalid option. Please enter a number from 0 to 12.")
 
