@@ -5,7 +5,6 @@ from DFA import *
 from CDFA import *
 from fun_episolon import *
 from word_recog import *
-import os
 
 def ask_keep_changes(modified_fa, original_fa):
     choice = input("\nDo you want to keep the modified version of the automaton? (y/n): ").lower()
@@ -21,7 +20,9 @@ fa = load_fa(filename, FA_FOLDER)
 print(f"\nAutomaton #{number} has been successfully loaded!\n")
 while True:
     input("Press enter to continue")
-    print("\n=== Main Menu ===")
+
+    print(f"\n\nCurrent Automaton : {filename}, Type : {fa.type}")
+    print("=== Main Menu ===")
     print("1.  Display the automaton")
     print("2.  Check if the automaton is standard")
     print("3.  Check if the automaton is deterministic")
@@ -57,38 +58,44 @@ while True:
     elif choice == "5":
         print("\n--- Standardizing the automaton ---")
         new_fa = standardize(fa)
-        print("The automaton has been standardized.")
+        print("The automaton has been standardized.\nThe standardized automaton is :")
+        display(new_fa)
         fa = ask_keep_changes(new_fa, fa)
 
     elif choice == "6":
         print("\n--- Determinizing the automaton ---")
         new_fa = determinize(fa)
-        print("The automaton has been determinized.")
+        print("The automaton has been determinized.\nThe determinized automaton is :")
+        display(new_fa)
         fa = ask_keep_changes(new_fa, fa)
 
     elif choice == "7":
         print("\n--- Standardizing and Completing the automaton ---")
         new_fa = standardize(fa)
         new_fa = completion(new_fa)
-        print("The automaton has been standardized and completed.")
+        print("The automaton has been standardized and completed.\nThe completed standardized automaton is :")
+        display(new_fa)
         fa = ask_keep_changes(new_fa, fa)
 
     elif choice == "8":
         print("\n--- Minimizing the automaton ---")
-        new_fa = minimize(fa)
-        print("The automaton has been minimized.")
+        #new_fa = minimize(fa)
+        print("The automaton has been minimized.\nThe minimized automaton is :")
+        display(new_fa)
         fa = ask_keep_changes(new_fa, fa)
 
     elif choice == "9":
         print("\n--- Completing the automaton ---")
         new_fa = completion(fa)
-        print("The automaton has been completed.")
+        print("The automaton has been completed.\nThe completed automaton is :")
+        display(new_fa)
         fa = ask_keep_changes(new_fa, fa)
 
     elif choice == "10":
         print("\n--- Removing epsilon transitions ---")
         new_fa = remove_epsilons(fa)
-        print("Epsilon transitions have been removed.")
+        print("Epsilon transitions have been removed.\nThe automaton without epsilon is : ")
+        display(new_fa)
         fa = ask_keep_changes(new_fa, fa)
 
     elif choice == "11":
