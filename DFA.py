@@ -8,7 +8,7 @@ def determinize(fa) -> FA:
     # automatic remove of epsilon if there is epsilon
     isepsilon = fa.uses_epsilon()
     # if isepsilon: fa = remove_epsilons(fa)
-    import copy    # copy fa before pour éviter qu'il modif le fa original
+    import copy    # we copy fa to not modify the initial fa
     if isepsilon: fa = remove_epsilons(FA(fa.entries_number, fa.terminal_number, fa.entries.copy(), fa.terminals.copy(), copy.deepcopy(fa.nodes)))
     
     aplha = len(fa.nodes[list(fa.nodes.keys())[0]])

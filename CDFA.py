@@ -29,8 +29,7 @@ def completion(fa: FA) -> FA:  # completize ?
         for i in range(1, len(new_nodes[n])):  # start to 1 to ignore the column epsilon
             # if There are no transitions from n using char i, we add a sink/trash state
             if len(new_nodes[n][i]) == 0:
-                new_nodes[n][i] = 'P'
+                new_nodes[n][i] = ['P']
     CDFa= FA(fa.entries_number, fa.terminal_number, fa.entries.copy(), fa.terminals.copy(), new_nodes)
     CDFa.type="CDFA"
     return CDFa
-
